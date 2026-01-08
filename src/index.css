@@ -1,13 +1,318 @@
-body {
+/* =====================
+   RESET & BASE
+===================== */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: radial-gradient(circle at top, #14141f, #0b0b11);
+  color: #ededed;
+  min-height: 100vh;
+}
+
+/* =====================
+   APP LAYOUT
+===================== */
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 40px 16px;
+  text-align: center;
+}
+
+/* global vertical rhythm */
+.app > * {
+  margin-bottom: 20px;
+}
+
+.app > *:last-child {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* =====================
+   CARD
+===================== */
+.card-wrapper {
+  position: relative;
+}
+
+.card {
+  background: linear-gradient(180deg, #111, #0d0d0d);
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-shadow: 0 0 30px rgba(0, 230, 118, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card h2 {
+  font-size: 2.1rem;
+  margin-bottom: 6px;
+}
+
+.card span {
+  color: #00e676;
+  font-weight: 800;
+}
+
+.muted {
+  color: #9e9e9e;
+  font-size: 0.95rem;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.checkin-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #00e676, #1de9b6);
+  color: #000;
+  border: none;
+  padding: 16px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s;
+}
+
+.checkin-btn:hover {
+  box-shadow: 0 8px 30px rgba(0, 230, 118, 0.35);
+}
+
+.checkin-btn:active {
+  transform: scale(0.96);
+}
+
+.checkin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.checkin-btn.danger {
+  background: linear-gradient(135deg, #ff3d00, #ff7043);
+  color: #fff;
+}
+
+/* =====================
+   PROGRESS BAR
+===================== */
+.progress-bar-wrapper {
+  margin-top: 10px;
+}
+
+.progress-bar {
+  background: #222;
+  border-radius: 20px;
+  height: 14px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #00e676, #1de9b6);
+  transition: width 0.4s ease;
+}
+
+.milestone-text {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #bdbdbd;
+}
+
+/* =====================
+   MOTIVATION
+===================== */
+.motivation {
+  font-size: 1rem;
+  font-style: italic;
+  color: #cfcfcf;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+.pop {
+  animation: pop 0.45s ease-out;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 55px rgba(0, 230, 118, 0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.glow {
+  animation: glowPulse 0.8s ease-out;
+}
+
+@keyframes glowPulse {
+  50% {
+    box-shadow: 0 0 70px rgba(0, 230, 118, 0.9);
+  }
+}
+
+/* =====================
+   FLOATING +1
+===================== */
+.plus-one {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #00e676;
+  animation: floatUp 0.9s ease-out forwards;
+}
+
+@keyframes floatUp {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-55px);
+  }
+}
+
+/* =====================
+   BADGES & MESSAGES
+===================== */
+.streak-badge {
+  position: absolute;
+  top: -14px;
+  right: -10px;
+  background: #00e676;
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.milestone-msg {
+  color: #00e676;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* =====================
+   HISTORY
+===================== */
+.history {
+  margin-top: 30px;
+}
+
+.history h3 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.history ul {
+  list-style: none;
+}
+
+.history li {
+  padding: 6px 0;
+  font-size: 0.95rem;
+  color: #c8e6c9;
+}
+
+/* =====================
+   MOBILE POLISH
+===================== */
+@media (max-width: 480px) {
+  .app {
+    padding: 30px 14px;
+  }
+
+  .card {
+    padding: 26px 18px;
+  }
+
+  .checkin-btn {
+    padding: 14px;
+  }
+}
+
+.install-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background: #00e676;
+  color: #0f0f14;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: pulse 1.5s infinite;
+  transform: translateX(100%); /* start off-screen */
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.install-btn.slide-in {
+  transform: translateX(0); /* slide in */
+  opacity: 1;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+/* Offline banner */
+.offline-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #ff9800;
+  color: #0f0f14;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: bold;
+  z-index: 2000;
+}
+
+/* Plus-one animation */
+.plus-one {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: #00e676;
+  animation: moveUp 0.8s ease-out forwards;
+}
+
+@keyframes moveUp {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-40px); }
 }
